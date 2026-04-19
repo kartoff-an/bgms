@@ -1,8 +1,9 @@
 import axios, { AxiosError } from "axios";
 import { ApiError } from "../types/api-error";
 import { ErrorHandler } from "../utils/error-handler";
+import Constants from "expo-constants";
 
-const BASE_URL = "http://192.168.11.104:8090/api/v1";
+const BASE_URL = Constants.expoConfig?.extra?.ApiBaseUrl;
 
 export const api = axios.create({
     baseURL: BASE_URL,
