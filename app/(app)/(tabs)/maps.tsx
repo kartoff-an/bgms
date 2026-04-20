@@ -33,12 +33,6 @@ const MapsScreen = () => {
     const targetLongitude = params.longitude ? parseFloat(params.longitude as string) : null;
 
     useEffect(() => {
-        startWatching((lat, lng) => {
-            setUserCoords([lng, lat]);
-        });
-    }, []);
-
-    useEffect(() => {
         if (!isMapReady || !mapRef.current) {
             // If we have coordinates from params, center on that geosite
             if (targetLatitude && targetLongitude) {

@@ -2,21 +2,27 @@ import "expo-router/entry";
 import { Redirect } from "expo-router";
 import { View, Text, Image } from "react-native";
 import { useEffect } from "react";
+import notifee, { EventType } from "@notifee/react-native";
+import messaging from "@react-native-firebase/messaging";
 
 import { useAuth } from "@app/contexts/auth.context";
 import { useLocation } from "@app/hooks/use-location";
 import { useNotifications } from "@app/hooks/use-notifications";
 import { userService } from "@app/services/user.service";
 
-// notifee.onBackgroundEvent(async ({ type, detail }) => {
-//     const { notification, pressAction } = detail;
+messaging().setBackgroundMessageHandler(async remoteMessage => {
+    console.log("BG FCM:", remoteMessage);
+});
 
-//     if (type === EventType.DISMISSED) {
-//         console.log('Notification dismissed', notification);
-//     } else if (type === EventType.PRESS) {
-//         console.log('Notification pressed', notification, pressAction);
-//     }
-// });
+notifee.onBackgroundEvent(async ({ type, detail }) => {
+    const { notification, pressAction } = detail;
+
+    if (type === EventType.DISMISSED) {
+        console.log('Notification dismissed', notification);
+    } else if (type === EventType.PRESS) {
+        console.log('Notification pressed', notification, pressAction);
+    }
+});
 
 export default function App() {
     const { user, loading } = useAuth();

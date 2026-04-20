@@ -50,5 +50,5 @@ build
 
 .env
 eas.json
-google-services.json
-geopark-490306-5a61dd271e9b.json
+# google-services.json
+# geopark-490306-5a61dd271e9b.json

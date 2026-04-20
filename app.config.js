@@ -52,7 +52,8 @@ export default {
       router: {},
       eas: {
         projectId: process.env.EXPO_PROJECT_ID
-      }
+      },
+      API_BASE_URL: process.env.API_BASE_URL
     },
 
     owner: "kartoffan25s-organization"
